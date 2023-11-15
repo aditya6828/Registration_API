@@ -1,0 +1,53 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Registration</title>
+    
+    
+</head>
+<body>
+    <% if flash[:success_message] %>
+    <div class="alert alert-success">
+    <%= flash[:success_message] %>
+    </div>
+    <% end %>
+
+    <% if flash[:error_message] %>
+        <div class="alert alert-danger">
+        <%= flash[:error_message] %>
+        </div>
+    <% end %>
+    <h1 class="display-1">User Registration</h1>
+
+    <%= form_with(url: '/user/register',method: 'post') do |form| %>
+        <label for="username" class="form-label">Username: </label>
+        <%= form.text_field :username, class: 'form-control', required: true   %><br>
+        
+        
+
+        <label for="email" class="form-label">Email:</label>
+        <%= form.text_field :email,class: 'form-control', required: true %><br>
+
+        <label for="password" class="form-label">Password: </label>
+        <%= form.password_field :password, class: 'form-control',required: true %><br>
+
+        <label for="password_confirmation" class="form-label">Confirm Password:</label>
+        <%= form.password_field :password_confirmation,class: 'form-control', required: true %><br>
+
+        <label for="firstname" class="form-label">First Name:</label>
+        <%= form.text_field :firstname,class: 'form-control', required: true %>
+        
+        <label for="lastname" class="form-label">Last Name:</label>
+        <%= form.text_field :lastname,class: 'form-control', required: true %><br>
+
+        <%= form.submit "Register", class: 'btn btn-primary' %>
+        <%= link_to 'Login', user_login_path, method: :get, class: 'btn btn-link btn-secondary' %>
+
+
+    <% end %>
+
+</body>
+</html>
